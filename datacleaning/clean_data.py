@@ -60,6 +60,11 @@ def parse_fields_from_single_line(line, gender_suffix):
     # Get rid of extra whitespace
     institution_name = re.sub('\s+', ' ', m.group(1)).strip()
 
+    # Different PDFs use different capitalization. E.g. 2008 calls Pelican Bay:
+    # "PELICAN BAY SP" while in 2013 it started being called:
+    # "Pelican Bay SP" (i.e. not all caps)
+    institution_name = institution_name.upper()
+
     if 'folsom' in institution_name.lower():
         # There is a "FOL (Folsom SP)" prison for both men and women - add the provided gender to
         # distinguish between the two

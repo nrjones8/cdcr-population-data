@@ -27,7 +27,7 @@ class DataPrepTests(unittest.TestCase):
             'Male'
         )
         self.assertEquals(parsed_san_quentin, {
-            'institution_name': 'SQ (San Quentin SP)',
+            'institution_name': 'SQ (SAN QUENTIN SP)',
             'population_felons': 4035,
             'civil_addict': 0,
             'total_population': 4035,
@@ -44,7 +44,7 @@ class DataPrepTests(unittest.TestCase):
             'Male'
         )
         self.assertEquals(parsed_chcf, {
-            'institution_name': 'CHCF (CA Health Care Fac - Stockton)',
+            'institution_name': 'CHCF (CA HEALTH CARE FAC - STOCKTON)',
             'population_felons': 2378,
             'civil_addict': 1,
             'total_population': 2379,
@@ -59,7 +59,7 @@ class DataPrepTests(unittest.TestCase):
             'Male'
         )
         self.assertEquals(parsed_san_quentin, {
-            'institution_name': 'FOL (Folsom SP) (Male)',
+            'institution_name': 'FOL (FOLSOM SP) (Male)',
             'population_felons': 4035,
             'civil_addict': 0,
             'total_population': 4035,
