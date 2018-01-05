@@ -5,6 +5,7 @@ import re
 import field_names
 
 from parse_pdfs import parse_pdf_to_string
+from prison_name_mapping import STANDARDIZED_PRISON_NAMES
 
 
 # A single line looks something like this:
@@ -69,6 +70,11 @@ def parse_fields_from_single_line(line, gender_suffix):
         # There is a "FOL (Folsom SP)" prison for both men and women - add the provided gender to
         # distinguish between the two
         institution_name += ' ({})'.format(gender_suffix)
+
+    # Sometimes the same prison is referred to by different names. Use the standardized map to
+    # make sure we're always using the same naming convention
+    standardized_name = STANDARDIZED_PRISON_NAMES[institution_name]
+
     numeric_fields = m.group(2).split()
 
     numeric_field_names = [
@@ -92,7 +98,7 @@ def parse_fields_from_single_line(line, gender_suffix):
 
     as_numeric_types = [make_numeric(x) for x in numeric_fields]
     parsed_fields = dict(zip(numeric_field_names, as_numeric_types))
-    parsed_fields[field_names.INSTITUTION_NAME] = institution_name
+    parsed_fields[field_names.INSTITUTION_NAME] = standardized_name
 
     return parsed_fields
 
@@ -102,7 +108,7 @@ def clean_data_from_pdf(pdf_path):
     pdf_as_string = parse_pdf_to_string(pdf_path, {1})
 
     cleaned_data = []
-    current_gender = 'Male'
+    current_gender = 'MALE'
     for line in pdf_as_string.split('\n'):
         if 'MALE TOTAL' in line:
             # The male prisons are listed first; once we hit the "MALE TOTAL" line, then we know
@@ -110,7 +116,7 @@ def clean_data_from_pdf(pdf_path):
             # prison, "FOL (Folsom SP)", has the same name - one for men, one for women. If we
             # don't include the gender in the name of the prison itself, analyzing the data will be
             # a bit messier, since there will be a duplicate entry for Folsom.
-            current_gender = 'Female'
+            current_gender = 'FEMALE'
         parsed_line = parse_fields_from_single_line(line, current_gender)
         if parsed_line is not None:
             cleaned_data.append(parsed_line)

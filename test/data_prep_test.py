@@ -24,7 +24,7 @@ class DataPrepTests(unittest.TestCase):
         # When there is a "0" for the "civil addict" column
         parsed_san_quentin = parse_fields_from_single_line(
             'SQ   (San Quentin SP)                 4,035               4,035     3,082     130.9        3,988',
-            'Male'
+            'MALE'
         )
         self.assertEquals(parsed_san_quentin, {
             'institution_name': 'SQ (SAN QUENTIN SP)',
@@ -41,7 +41,7 @@ class DataPrepTests(unittest.TestCase):
         # Example from: https://www.cdcr.ca.gov/Reports_Research/Offender_Information_Services_Branch/Monthly/TPOP1A/TPOP1Ad1705.pdf
         parsed_chcf = parse_fields_from_single_line(
             'CHCF (CA Health Care Fac - Stockton)  2,378  1   2,379   2,951   80.6   2,951',
-            'Male'
+            'MALE'
         )
         self.assertEquals(parsed_chcf, {
             'institution_name': 'CHCF (CA HEALTH CARE FAC - STOCKTON)',
@@ -56,10 +56,10 @@ class DataPrepTests(unittest.TestCase):
     def test_includes_gender_for_folsom(self):
         parsed_san_quentin = parse_fields_from_single_line(
             'FOL (Folsom SP)                 4,035               4,035     3,082     130.9        3,988',
-            'Male'
+            'MALE'
         )
         self.assertEquals(parsed_san_quentin, {
-            'institution_name': 'FOL (FOLSOM SP) (Male)',
+            'institution_name': 'FOL (FOLSOM SP) (MALE)',
             'population_felons': 4035,
             'civil_addict': 0,
             'total_population': 4035,
