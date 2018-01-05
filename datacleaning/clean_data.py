@@ -71,10 +71,6 @@ def parse_fields_from_single_line(line, gender_suffix):
         # distinguish between the two
         institution_name += ' ({})'.format(gender_suffix)
 
-    # Sometimes the same prison is referred to by different names. Use the standardized map to
-    # make sure we're always using the same naming convention
-    standardized_name = STANDARDIZED_PRISON_NAMES[institution_name]
-
     numeric_fields = m.group(2).split()
 
     numeric_field_names = [
@@ -98,6 +94,10 @@ def parse_fields_from_single_line(line, gender_suffix):
 
     as_numeric_types = [make_numeric(x) for x in numeric_fields]
     parsed_fields = dict(zip(numeric_field_names, as_numeric_types))
+
+    # Sometimes the same prison is referred to by different names. Use the standardized map to
+    # make sure we're always using the same naming convention
+    standardized_name = STANDARDIZED_PRISON_NAMES[institution_name]
     parsed_fields[field_names.INSTITUTION_NAME] = standardized_name
 
     return parsed_fields

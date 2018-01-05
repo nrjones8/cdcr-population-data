@@ -58,8 +58,9 @@ def main():
             # of the PDFs. We could hypothetically do that, but the file-naming convention should
             # work too.
             for i in range(len(cleaned_data)):
-                cleaned_data[i]['month'] = month
-                cleaned_data[i]['year'] = year
+                cleaned_data[i][field_names.MONTH] = month
+                cleaned_data[i][field_names.YEAR] = year
+                cleaned_data[i][field_names.SOURCE_PDF] = pdf
 
             combined_data.extend(cleaned_data)
 
@@ -75,6 +76,7 @@ def main():
         field_names.DESIGNED_CAP,
         field_names.PCT_OCCUPIED,
         field_names.STAFFED_CAP,
+        field_names.SOURCE_PDF
     ]
     write_csv(combined_data, cl_args.outfile, fields_in_order)
     print 'Wrote output to {}'.format(cl_args.outfile)
