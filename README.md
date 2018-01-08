@@ -14,6 +14,8 @@ year  month  institution_name                  population_felons  civil_addict  
 ...
 ```
 
+I've gone through a number of the PDFs by hand to double check the numbers are correct, but if you spot mistakes or otherwise think something is wrong, please [create a Github issue](https://github.com/nrjones8/cdcr-population-data/issues). If you're not familiar and want to report a bug, please reach out via email (nrjones8@gmail.com).
+
 ## Raw PDFs
 Data come from the PDFs of monthly archives at: https://www.cdcr.ca.gov/Reports_Research/Offender_Information_Services_Branch/Monthly/Monthly_Tpop1a_Archive.html
 
