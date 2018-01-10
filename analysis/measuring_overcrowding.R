@@ -191,20 +191,19 @@ plot_pct_exceeding_overcrowding <- function(df, path_to_save=NULL, overwrite=FAL
       '<br>',
       # Thanks to https://stackoverflow.com/a/12135122
       format(round(pct_overpopulated, 2), nsmall = 2),
-      '% of prison population needs to be let out',
+      '% of prison population is exceeding 137.5% limit',
       sep = ''
     )
   ) %>%
     # Styling stuff
     layout(
-      title = '',
+      title = 'Percent of Prison Population Exceeding 137.5%',
       xaxis = list(title = "Year"),
-      yaxis = list(title = "% of people needing release...")
+      yaxis = list(title = "% of people exceeding 137.5% limit", range = c(0, max(df$pct_overpopulated)))
     )
-  #if (!is.null(path_to_save) && overwrite) {
-  #  api_create(p, filename = path_to_save)
-  #}
-  p
+  if (!is.null(path_to_save) && overwrite) {
+    api_create(p, filename = path_to_save)
+  }
 }
 
 summary_stats <- function(df) {
@@ -239,4 +238,4 @@ plotly_scatter(end_of_2017, 'overcrowding-scatter-end-of-2017')
 
 overcrowding_stats <- calc_pct_in_overcrowded(data)
 plot_pct_in_overcrowded(overcrowding_stats, 'overcrowding-pct-in-overcrowded')
-plot_pct_exceeding_overcrowding(overcrowding_stats)
+plot_pct_exceeding_overcrowding(overcrowding_stats, 'overcrowding-pct-exceeding-limit')
