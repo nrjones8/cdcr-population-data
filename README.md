@@ -1,7 +1,9 @@
 # Why this data?
 The CDCR (California Department of Corrections and Rehabilitation) releases monthly reports on the number of people in state prisons around California. These reports also include the designed capacities of each prison, and how the current population compares to that capacity. California prisons have had extreme overcrowding issues for a long time - see, e.g. [Brown v Plata](https://en.wikipedia.org/wiki/Brown_v._Plata), which is the US Supreme Court case that finally sparked a concerted effort to reduce overcrowding.
 
-Unfortunately, the reports provided by the CDCR are **only available in PDF format, with one PDF provided per month**. Trying to analyze those numbers over many months and years is very difficult in such a format. This repository changes that, parsing the monthly PDF reports from 1996 to the present day to provide these data in one CSV. That CSV is [available here](data/monthly_cdcr_population.csv).
+Unfortunately, the reports provided by the CDCR are **only available in PDF format, with one PDF provided per month**. Trying to analyze those numbers over many months and years is very difficult in such a format. This repository changes that, parsing the monthly PDF reports from 1996 to the present day to provide these data in one CSV.
+
+The monthly, per-prison data is [available here](data/monthly_cdcr_population.csv), or [on Google Sheets](https://docs.google.com/spreadsheets/d/1Hbg3ON2foBZzAIqasVrA6wDvDf2dApFF7kCQbCurS1Q/edit?usp=sharing).
 
 The data look something like this:
 ```
