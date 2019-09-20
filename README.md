@@ -33,3 +33,9 @@ To re-parse / re-generate that CSV, run:
 ```
 python datacleaning/bulk_parse_pdfs.py --verbose
 ```
+
+## Running tests
+There are tests! Run them with `nose`:
+```
+nosetests
+```
