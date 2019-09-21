@@ -24,3 +24,10 @@ def get_year_month_from_pdf_name(pdf_name):
     month = m.group(2)
 
     return full_year, month
+
+def make_numeric(s):
+    without_commas = s.replace(',', '').strip()
+    if '.' in without_commas:
+        return float(without_commas)
+    else:
+        return int(without_commas)

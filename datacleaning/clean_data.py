@@ -4,6 +4,7 @@ import re
 
 import field_names
 
+from cdcr_util import make_numeric
 from parse_pdfs import parse_pdf_to_string
 from prison_name_mapping import STANDARDIZED_PRISON_NAMES
 
@@ -16,13 +17,6 @@ PDF_POPULATION_REGEX_WITH_EXTRA = (
     # The rest are numeric fields
     '([\d|,|\.|\s]+)'
 )
-
-def make_numeric(s):
-    without_commas = s.replace(',', '').strip()
-    if '.' in without_commas:
-        return float(without_commas)
-    else:
-        return int(without_commas)
 
 def sanity_check_cleaned_data(cleaned_data):
     total_institutions = len(cleaned_data)

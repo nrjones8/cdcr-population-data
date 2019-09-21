@@ -1,22 +1,11 @@
 import unittest
 
-from datacleaning.clean_data import make_numeric, parse_fields_from_single_line
+from datacleaning.clean_data import parse_fields_from_single_line
 
 class DataPrepTests(unittest.TestCase):
     def test_converts_a_pdf(self):
         # Use a real PDF, check the number of lines, one specific line
         pass
-
-    def test_converts_numbers(self):
-        # Comma ints
-        self.assertEqual(make_numeric('1,234'), 1234)
-        # Check multiple commas too
-        self.assertEqual(make_numeric('1,234,567'), 1234567)
-        self.assertEqual(make_numeric('1234'), 1234)
-
-        # Decimals
-        self.assertEqual(make_numeric('34.5'), 34.5)
-        self.assertEqual(make_numeric('2.3'), 2.3)
 
     def test_parses_line_with_no_civil_addict(self):
         # Example line taken from this dataset:
