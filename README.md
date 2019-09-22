@@ -19,12 +19,9 @@ year  month  institution_name                  population_felons  civil_addict  
 I've gone through a number of the PDFs by hand to double check the numbers are correct, but if you spot mistakes or otherwise think something is wrong, please [create a Github issue](https://github.com/nrjones8/cdcr-population-data/issues). If you're not familiar and want to report a bug, please reach out via email (nrjones8@gmail.com).
 
 ## Raw PDFs
-Data come from the PDFs of monthly archives at: https://sites.cdcr.ca.gov/research/population-reports/
+Data come from the PDFs of monthly archives at: https://www.cdcr.ca.gov/research/monthly-total-population-report-archive/
 
-The PDFs themselves are pulled down and checked into this repository under data/raw_monthly_pdfs/. The names of the PDFs have not been changed. They were downloaded by running the following script:
-```
-python datacleaning/scrape_from_cdcr.py
-```
+The PDFs themselves are pulled down and checked into this repository under data/raw_monthly_pdfs/. The names of the PDFs have not been changed. Pre-2019, they were downloaded by running a script (`datacleaning/scrape_from_cdcr.py`). The naming of files / directories changed around a bit starting in 2019 - to add new PDFs, just go to the website and download manually the newest month, and save it to the data/raw_monthly_pdfs/ directory.
 
 ## Parsing the PDFs
 The PDFs are parsed using tools in the `datacleaning` directory in the root of this repo. The result of their parsing is in this directory at `data/monthly_cdcr_population.csv`.

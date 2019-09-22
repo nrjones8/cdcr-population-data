@@ -4,6 +4,7 @@ import os
 
 from cdcr_util import get_year_month_from_pdf_name
 from clean_data import clean_data_from_pdf
+from clean_data_2019_and_later import clean_data_from_pdf_2019_and_later
 
 import field_names
 
@@ -52,7 +53,10 @@ def main():
             print 'Processing {} with year {} and month {}'.format(full_path, year, month)
 
         if full_path.endswith('.pdf'):
-            cleaned_data = clean_data_from_pdf(full_path)
+            if int(year) < 2019:
+                cleaned_data = clean_data_from_pdf(full_path)
+            else:
+                cleaned_data = clean_data_from_pdf_2019_and_later(full_path, year, month)
 
             # Add the month and year here, since they're not included in the data we're parsing out
             # of the PDFs. We could hypothetically do that, but the file-naming convention should
